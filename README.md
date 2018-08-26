@@ -10,7 +10,7 @@ From your C9 workspace, right-click setup.sh in the c9 file tree, and choose Run
 sgc, and a script, github-tools/sync.sh that will synchronize your c9 workspace and your GitHub repo. This is how you "turn in" work. You can run this script the same way you ran the setup script (right-click -> Run).
 
 ##How to complete the assignment
-In your c9 workspace, you will implement the Stranger Hunt game by following the instructions found at https://csci110.github.io/1_StrangerHunt.html.
+In your c9 workspace, you will implement the Stranger Hunt game by following the instructions found at https://csci110.github.io/2_WizardsDuel.html.
 
 ##SGC Help File:
 https://csci110.github.io/sgc/
