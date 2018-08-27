@@ -1,0 +1,6 @@
+[submodule "github-tools"]
+	path = github-tools
+	url = https://github.com/csci110/github-tools.git
+[submodule "sgc"]
+	path = sgc
+	url = https://github.com/csci110/sgc.git
