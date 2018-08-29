@@ -24,5 +24,5 @@ You should see a Run tab in the console pane at the bottom of the screen. (If yo
 
 On branch master
 Your branch is up-to-date with 'origin/master'.
-nothing to commit, working tree clean
+nothing to commit, working tree clean.
 If you encounter any problems with the submit process, capture a screen shot that includes contents of the Run tab and email it to your instructor.
