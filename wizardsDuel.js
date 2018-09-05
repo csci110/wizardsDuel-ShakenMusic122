@@ -8,6 +8,7 @@ class PlayerWizard extends Sprite {
         this.setImage("marcusSheet.png");
         this.defineAnimation("down", 6, 8);
         this.defineAnimation("up", 0, 2);
+        this.defineAnimation("right", 3, 5);
         this.height = 48;
         this.width = 48;
         this.x = this.width;
@@ -25,17 +26,23 @@ class PlayerWizard extends Sprite {
         this.angle = 90;
     }
     handleGameLoop() {
+        // Keep Marcus in the display area
         this.y = Math.max(0, this.y);
         this.y = Math.min(game.displayHeight - this.height, this.y);
         this.speed = 0;
     }
     handleSpacebar() {
         let spell = new Spell();
-        spell.x = this.x;
-        spell.y = this.y;
+        spell.x = this.x + this.width; // this sets the position of the spell object equal to
+        spell.y = this.y; // the position of any object created from the PlayerWizard class
         spell.name = "A spell cast by Marcus";
         spell.setImage("marcusSpellSheet.png");
         spell.angle = 0;
+        this.playAnimation("right");
+    }
+    handleBoundaryContract() {
+        // Delete spell when it leaves display area
+        game.removeSprite(this);
     }
 }
 
@@ -51,4 +58,3 @@ class Spell extends Sprite {
         this.playAnimation("magic", true);
     }
 }
-
