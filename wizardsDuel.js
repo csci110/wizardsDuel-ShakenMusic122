@@ -58,3 +58,37 @@ class Spell extends Sprite {
         this.playAnimation("magic", true);
     }
 }
+
+class NonplayerWizard extends Sprite {
+    constructor() {
+        super();
+        this.name = "The mysterious stranger";
+        this.setImage("strangerSheet.png");
+        this.defineAnimation("down", 6, 8);
+        this.defineAnimation("up", 0, 2);
+        this.defineAnimation("left", 9, 11);
+        this.width = 48;
+        this.height = 48;
+        this.x = game.displayWidth - 2 * this.width;
+        this.y = this.height;
+        this.angle = 270;
+        this.speed = 150;
+        this.playAnimation("down");
+    }
+    handleGameLoop() {
+        if (this.y <= 0) {
+            // Upward motion has reached top, so turn down
+            this.y = 0;
+            this.angle = 270;
+            this.playAnimation("down");
+        }
+        if (this.y >= game.displayHeight - this.height) {
+            // Downward motion has reached bottom, so turn up
+            this.y = game.displayHeight - this.height;
+            this.angle = 90;
+            this.playAnimation("up");
+        }
+    }
+}
+
+let stranger = new NonplayerWizard();
