@@ -27,7 +27,7 @@ class PlayerWizard extends Sprite {
     }
     handleGameLoop() {
         // Keep Marcus in the display area
-        this.y = Math.max(0, this.y);
+        this.y = Math.max(5, this.y);
         this.y = Math.min(game.displayHeight - this.height, this.y);
         this.speed = 0;
     }
@@ -56,6 +56,14 @@ class Spell extends Sprite {
         this.width = 48;
         this.defineAnimation("magic", 0, 7);
         this.playAnimation("magic", true);
+    }
+    handleCollision(otherSprite) {
+        // Compare images so Stranger's spells don't destroy each other.
+        if (this.getImage() != otherSprite.getImage()) {
+            game.removeSprite(this);
+            new Fireball(otherSprite);
+        }
+        return false;
     }
 }
 
@@ -89,6 +97,27 @@ class NonplayerWizard extends Sprite {
             this.playAnimation("up");
         }
     }
+    handleAnimationEnd() {
+        if (this.angle === 90) {
+            this.playAnimation("up");
+        }
+        if (this.angle === 270) {
+            this.playAnimation("down");
+        }
+    }
 }
 
 let stranger = new NonplayerWizard();
+
+class Fireball extends Sprite {
+    constructor(deadSprite) {
+        super ();
+        this.x = deadSprite.x;
+        this.y = deadSprite.y;
+        this.setImage("fireballSheet.png");
+        this.name = "A ball of fire";
+        game.removeSprite(deadSprite);
+        this.defineAnimation("explode", 0, 15);
+        this.playAnimation("explode");
+    }
+}
