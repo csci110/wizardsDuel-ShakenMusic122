@@ -14,6 +14,7 @@ class PlayerWizard extends Sprite {
         this.x = this.width;
         this.y = this.height;
         this.speedWhenWalking = 100;
+        this.spellCastTime = 0;
     }
     handleDownArrowKey() {
         this.playAnimation("down");
@@ -32,13 +33,19 @@ class PlayerWizard extends Sprite {
         this.speed = 0;
     }
     handleSpacebar() {
-        let spell = new Spell();
-        spell.x = this.x + this.width; // this sets the position of the spell object equal to
-        spell.y = this.y; // the position of any object created from the PlayerWizard class
-        spell.name = "A spell cast by Marcus";
-        spell.setImage("marcusSpellSheet.png");
-        spell.angle = 0;
-        this.playAnimation("right");
+        let now = game.getTime(); //get the number of seconds since game start
+        if (now - this.spellCastTime >= 2) {
+            // reset the timer
+            this.spellCastTime = now;
+            // and cast a spell
+            let spell = new Spell();
+            spell.x = this.x + this.width; // this sets the position of the spell object equal to
+            spell.y = this.y; // the position of any object created from the PlayerWizard class
+            spell.name = "A spell cast by Marcus";
+            spell.setImage("marcusSpellSheet.png");
+            spell.angle = 0;
+            this.playAnimation("right");
+        }
     }
     handleBoundaryContract() {
         // Delete spell when it leaves display area
@@ -104,6 +111,7 @@ class NonplayerWizard extends Sprite {
             let spell = new Spell();
             // Create a spell object 48 pixels to the left of this object
             spell.x = this.x - this.width;
+            spell.y = this.y;
             // Make it go left, give it a name and an image
             spell.angle = 180;
             spell.name = "A spell cast by the mysterious stranger";
