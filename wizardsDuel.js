@@ -156,3 +156,33 @@ class Fireball extends Sprite {
         }
     }
 }
+
+/* Ideas for shooter project
+evil moving tree with falling fruit or leaves,
+catching it in a basket,
+point game 
+vertical
+
+same as above except
+horizontal
+spraying killer leaves at you (like in pokemon)
+congrats game
+shooting tree with ? (spells, weapons, etc.)
+
+hunting birds or ducks (facing gun?)
+birds release poop
+congrats, hit bird
+better luck next time, poop falls on gun/you (take a shower)
+if facing gun, you riding in vehicle trying to shoot bird?
+
+soccer, shoot in goal
+goalie guarding (bounce back if hits goalie)
+congrats, made a goal
+better luck next time, gets in your goal
+(vertical) or horizontal?
+certain time limit?
+name: 
+    The Goals of the Goalie
+    
+virus coming after dolphin
+*/
